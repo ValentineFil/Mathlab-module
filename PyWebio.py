@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
-
+# Выбираем, вводим и выводим функции
 # In[ ]:
 
 
