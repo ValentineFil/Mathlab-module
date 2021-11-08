@@ -349,4 +349,51 @@ print(plt.show())
 # запись в цсв
 write_to_csv(glob_x_range, glob_y_range, header=True)
 #log2(x*(19))+(-26)sin(x*(14))+(77)
+import tkinter as tk
+import sys
+from tkinter.filedialog import asksaveasfilename
+import pymysql
+ 
+def save_file_as():
+    filepath = asksaveasfilename(
+        defaultextension = "txt",
+        filetypes = [("Текстовые файлы", "*.txt"), ("HTML файлы", "*.html"), ("CSV файлы", "*.csv")]
+        )
+    if not filepath:
+        return
+    with open(filepath, "w", encoding = "UTF-8") as output_file:
+        text = txt_edit.get("1.0", tk.END)
+        output_file.write(text)
+    window.title(f"Work with - {filepath}")
+    
+def exit():
+    window.after(1,window.destroy)
+    sys.exit
 
+ 
+window = tk.Tk()
+window.title("Save text")
+ 
+window.rowconfigure(0, minsize = 50, weight = 1)
+window.columnconfigure(1, minsize = 50, weight = 1)
+ 
+txt_edit = tk.Text(window)
+fr_buttons = tk.Frame(window)
+fr_buttons2 = tk.Frame(window)
+
+
+btn_save = tk.Button(fr_buttons, text = "Save file_as", command = save_file_as)
+btn_exit = tk.Button(fr_buttons2, text = "Exit", command = exit)
+
+ 
+btn_save.grid(row = 0, column = 0, padx = 5, pady = 5)
+btn_exit.grid(row = 0, column = 0, padx = 5, pady = 5)
+
+
+fr_buttons.grid(row = 0, column = 0, sticky = "ne")
+fr_buttons2.grid(row = 1, column = 0, sticky = "ne")
+
+
+txt_edit.grid(row = 0, column = 1)
+ 
+window.mainloop()
