@@ -94,7 +94,7 @@ import mathlab
 mydb = pymysql.connect(
   host="localhost",
   user="root",
-  passwd="Valik3612336123"
+  passwd=""
 )
 
 mycursor = mydb.cursor() #cursor created
@@ -106,7 +106,7 @@ import MySQLdb
 
 from sqlalchemy import create_engine
 
-my_conn = create_engine("mysql+mysqldb://root:Valik3612336123@localhost/matrix_newdb") #fill details
+my_conn = create_engine("mysql+mysqldb://root:@localhost/matrix_newdb") #fill details
 df.to_sql(con=my_conn,name='table1',if_exists='append')
 df2.to_sql(con=my_conn,name='table2',if_exists='append')
 
@@ -117,7 +117,7 @@ mydb = pymysql.connect(
     host="localhost",
     database='matrix_newdb',
     user="root",
-    passwd="Valik3612336123"
+    passwd=""
 )
 
 mycursor = mydb.cursor() #cursor created
